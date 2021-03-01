@@ -3,24 +3,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import './Player.css';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import '../Bootstrap/bootstrap.min.css';
 
-const Player = (props) => { 
-    const {name, salary, image} = props.player;
+const Player = (props) => {
+    const { name, salary, image } = props.player;
     const handleAddPlayer = props.handleAddPlayer;
     return (
-        <div className = "player">
-            <div>
-            <img className ="player-image" src={image} alt=""/>
+        <div>
+            <div className="d-flex justify-content-center">
+                <Card Card style={{ width: '18rem'}}>
+                        <Card.Img variant="top" src={image}/>
+                        <Card.Body>
+                            <Card.Title>Name: {name}</Card.Title>
+                            <Card.Text>Salary: {salary}</Card.Text>
+                            <Button variant="success" onClick={() => handleAddPlayer(props.player)}> <FontAwesomeIcon icon={faShoppingCart} /> Add to Cart</Button>{' '}
+                        </Card.Body>
+                </Card> 
+            </div>
         </div>
 
-        <div className = "player-info">
-            <h2>Name : {name}</h2>
-            <h3>Salary: {salary}</h3> 
-            <Button variant="success" onClick={() => handleAddPlayer(props.player)}> <FontAwesomeIcon icon={faShoppingCart} /> Add to Summery</Button>{' '}
-        </div>
-        </div>
-        
     );
 };
 

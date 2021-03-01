@@ -2,11 +2,21 @@ import React from 'react';
 
 const Summery = (props) => {
     const summery = props.summery;
-    const totalBudget =  summery.reduce( (sum, player) => sum + player.salary, 0);
+    const totalExpense =  summery.reduce( (sum, player) => sum + player.salary, 0);
+    let name = [];
+    for (let i = 0; i < summery.length; i++) {
+        const cricketPlayer = summery[i];
+        const  playerName = cricketPlayer.name;
+        const playerSalary = cricketPlayer.salary;
+        name = name + playerName + "( "+ playerSalary +" Taka)" + ", ";
+    }
     return (
         <div>
-            <h2>This is Summery: {summery.length}</h2>
-            <h2>Total Budget: {totalBudget}</h2>
+            <ul>
+                <p> <h2>Selected Player: </h2> {name}</p>
+            </ul>
+            <h2>Total Expense: {totalExpense} Taka</h2>
+            <p></p>
         </div>
     );
 };
